@@ -1,0 +1,87 @@
+# =========================
+# PROJECT CLEANUP
+# =========================
+
+# Node dependencies (if ever used later)
+node_modules/
+
+# Build and cache folders
+dist/
+build/
+.cache/
+tmp/
+temp/
+
+# =========================
+# 🖥️ SYSTEM / OS FILES
+# =========================
+
+# Windows junk
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# macOS junk (if shared)
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# =========================
+# ☁️ CLOUD SYNC (OneDrive)
+# =========================
+
+# Ignore OneDrive sync metadata
+*.lnk
+*.tmp
+~$*
+OneDriveTemp/
+*.icloud
+*.sync
+.sync*
+
+# =========================
+# 🧩 IDE / EDITOR FILES
+# =========================
+
+# VS Code settings
+.vscode/
+.history/
+*.code-workspace
+
+# JetBrains (if ever used)
+.idea/
+
+# =========================
+# 🗄️ LOGS & ENV
+# =========================
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment variables (if added later)
+.env
+.env.local
+.env.development
+.env.production
+
+# =========================
+# 📦 OTHERS (Safe ignores)
+# =========================
+
+# Backup files
+*.bak
+*.old
+*.swp
+
+# Output archives
+*.zip
+*.tar.gz
+*.rar
+
+# =========================
+# ✅ END OF .gitignore
+# =========================
