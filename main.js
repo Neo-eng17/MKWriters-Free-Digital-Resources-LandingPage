@@ -33,42 +33,34 @@ sr.reveal('.newsletter .box', { delay: 400, origin: 'bottom'})
 sr.reveal('.footer .box', { delay: 200, origin: 'top'})
 
 // Modal functionality
-const modal = document.getElementById('modal');
-const cancelModal = document.getElementById('cancelModal');
-const form = document.getElementById('leadForm');
-const successBox = document.getElementById('successBox');
-const skillInput = document.getElementById('skillInput');
+let modal = document.querySelector('.modal');
+let modalBtn = document.querySelector('.modal-btn');
+let closeModal = document.querySelector('.close-modal');  
 
-function showModal() {
-  modal.style.display = 'flex'; // shows overlay
-  form.style.display = 'block'; // show form
-  successBox.style.display = 'none'; // hide success box
+modalBtn.onclick = () => {
+    modal.style.display = 'block';
+}
+closeModal.onclick = () => {
+    modal.style.display = 'none';
+}
+window.onclick = (event) => {
+    if (event.target == modal) {
+        modal.style.display = 'none';
+    }
 }
 
-function hideModal() {
-  modal.style.display = 'none';
-}
-
-// Event listeners for opening modal from skill cards
-document.querySelectorAll('[data-action="select"]').forEach(btn => {
-  btn.addEventListener('click', e => {
-    skillInput.value = e.target.getAttribute('data-skill');
-    showModal();
-  });
-});
-
-// Event listener for cancel button
-cancelModal.addEventListener('click', hideModal);
-
-// Close modal when clicking outside modal content
-modal.addEventListener('click', e => {
-  if (e.target === modal) hideModal();
-});
-
-// Form submission handling
-form.addEventListener('submit', e => {
-  e.preventDefault();
-  form.style.display = 'none';
-  successBox.style.display = 'block';
-});
-
+// Form validation  
+let form = document.querySelector('.form-container form');
+form.onsubmit = (event) => {
+    event.preventDefault();
+    let name = form.querySelector('input[name="name"]').value;
+    let email = form.querySelector('input[name="email"]').value;
+    let message = form.querySelector('textarea[name="message"]').value;
+    if (name && email && message) {
+        alert('Form submitted successfully!');
+        form.reset();
+    }
+    else {
+        alert('Please fill in all fields.');
+    } 
+};
