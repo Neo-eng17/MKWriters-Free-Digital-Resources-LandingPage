@@ -135,14 +135,53 @@ header { position: fixed; width: 100%; top: 0; right: 0; z-index: 100; display: 
     .reviews-wrapper .box:hover {transform: scale(1.05);}
 
     /* Trust Belt Section */
-.trust-belt {background: none;padding: 2.5rem 5%;text-align: center;color: #fff;}
-.trust-heading { display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 1.4rem;font-weight: 700; color: #222; text-align: center; -webkit-background-clip: text; -webkit-text-fill-color: #ffa600; letter-spacing: 0.5px; margin-bottom: 1.5rem; } 
-.trust-heading .trustpilot-logo { width: 120px; height: auto; vertical-align: middle; margin-left: 6px; transition: transform 0.3s ease; } 
-.trust-heading .trustpilot-logo:hover { transform: scale(1.05); } 
-.trust-heading .stars {display: flex; align-items: center; margin-left: 8px; } 
-.trust-logos {display: flex;justify-content: center;align-items: center;gap: 3rem;flex-wrap: wrap; margin-top: 20px;}
-.trust-logos img {width: 100px;height: auto;transition: all 0.3s ease;}
-.trust-logos img:hover {transform: scale(1.1);}
+/* === Trust Section === */
+.trust-belt {
+text-align: center; padding: 20px 10px; background: #fff; position: relative; overflow: hidden; } 
+
+.trust-heading {
+font-size: 1.3rem; font-weight: 600; color: #111; margin-bottom: 40px; display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 10px; } 
+
+.trustpilot-logo {
+height: 24px; width: auto; vertical-align: middle; } 
+
+
+/* === Logo Loop Styles (from your base) === */
+.logoloop { position: relative;  overflow-x: hidden;  --logoloop-gap: 60px;  --logoloop-logoHeight: 36px;  --logoloop-fadeColorAuto: #ffffff; } 
+
+.logoloop__track {
+ display: flex;  width: max-content;  will-change: transform;  user-select: none; } 
+
+.logoloop__list {
+display: flex; align-items: center; } 
+
+.logoloop__item {
+flex: 0 0 auto; margin-right: var(--logoloop-gap); 
+}
+
+.logoloop__item img {
+height: var(--logoloop-logoHeight); width: auto; display: block; object-fit: contain; transition: transform 0.3s ease; opacity: 0.9; } 
+
+.logoloop__item:hover img { transform: scale(1.2); opacity: 1; } 
+
+
+/* Fade gradient at edges */
+.logoloop--fade::before,
+.logoloop--fade::after {
+content: ''; position: absolute; top: 0; bottom: 0; width: clamp(24px, 8%, 120px); pointer-events: none; z-index: 1; } 
+
+.logoloop--fade::before { left: 0; background: linear-gradient(to right, var( logoloop-fadeColorAuto) 0%, transparent 100%); } 
+.logoloop--fade::after {
+right: 0; background: linear-gradient(to left, var(--logoloop-fadeColorAuto) 0%, transparent 100%); } 
+
+
+@media (prefers-color-scheme: dark) {
+  .trust-belt {
+ background: #d3d2d2; } 
+  .trust-heading {
+ color: #a80000; } 
+  .logoloop {
+ --logoloop-fadeColorAuto: #646464; } } 
 
 /* ====== FOOTER ====== */
 .footer {background: linear-gradient(135deg,#cc0101, #880000, #000000); color: #fff; padding: 4rem 8%; font-family: 'Poppins', sans-serif; position: relative; border: 1px solid var(--second-color); } 
