@@ -26,14 +26,15 @@ const sr = ScrollReveal({
 });
 
 sr.reveal('.text', { delay: 200, origin: 'top' });
-sr.reveal('.form-container form', { delay: 400, origin: 'left' });
-sr.reveal('.heading', { delay: 400, origin: 'top' });
-sr.reveal('.ride-container .box', { delay: 200, origin: 'top' });
-sr.reveal('.services-container .box', { delay: 200, origin: 'top' });
-sr.reveal('.about-container', { delay: 200, origin: 'top' });
-sr.reveal('.reviews-container', { delay: 200, origin: 'top' });
-sr.reveal('.newsletter .box', { delay: 400, origin: 'bottom' });
-sr.reveal('.footer .box', { delay: 200, origin: 'top' });
+sr.reveal('.home-text', { delay: 400, origin: 'bottom' });
+sr.reveal('.heading', { delay: 400, origin: 'bottom' });
+sr.reveal('.ride-container .box', { delay: 200, origin: 'bottom' });
+sr.reveal('.services-container .box', { delay: 200, origin: 'bottom' });
+sr.reveal('.about-container', { delay: 200, origin: 'bottom' });
+sr.reveal('.reviews', { delay: 200, origin: 'bottom' });
+sr.reveal('.newsletter', { delay: 400, origin: 'right' });
+sr.reveal('.trust-heading', { delay: 400, origin: 'bottom' });
+sr.reveal('.footer .box', { delay: 200, origin: 'right' });
 
 // ===== Modal + Lead Form Functionality (EmailJS Version) =====
 document.addEventListener("DOMContentLoaded", () => {
