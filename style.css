@@ -81,27 +81,33 @@ header {
 /* Navigation */
 nav.navbar {
   display: flex;
-  gap: 10px;
+  gap: 8px;
   flex-wrap: nowrap;
   overflow-x: auto;
   white-space: nowrap;
   flex-grow: 1;
   min-width: 0;
-  scrollbar-width: none; /* Hide scrollbar Firefox */
+  scrollbar-width: none; /* Hide scrollbar on Firefox */
 }
+
 nav.navbar::-webkit-scrollbar {
-  display: none; /* Hide scrollbar on Chrome/Safari */
+  display: none; /* Hide scrollbar on Chrome/Safari/Edge */
 }
+
 nav.navbar a {
-  flex-shrink: 0;
-  font-size: clamp(10px, 2vw, 14px);
+  flex-shrink: 1;
+  font-size: clamp(9px, 1.7vw, 13px);
   color: #fff;
-  font-weight: 600;
+  font-weight: 500;
   text-decoration: none;
-  padding: 7px 12px;
-  border-radius: 6px;
+  padding: 6px 10px;
+  border-radius: 5px;
   transition: background-color 0.3s ease;
-  white-space: nowrap;
+  background: rgba(255,255,255,0.05); /* subtle touch */
+}
+nav.navbar::after {
+  content: '';
+  flex: 0 0 20px; /* space at end */
 }
 nav.navbar a:hover,
 nav.navbar a.active {
@@ -111,18 +117,18 @@ nav.navbar a.active {
 
 /* CTA Button */
 header .btn {
-  flex-shrink: 0;
-  font-size: clamp(11px, 2.2vw, 14px);
-  padding: 6px 14px;
-  font-weight: 700;
-  border-radius: 8px;
+  flex-shrink: 1; /* allow it to shrink */
+  font-size: clamp(10px, 1.8vw, 13px);
+  padding: 4px 10px; /* less padding */
+  font-weight: 600;
+  border-radius: 6px;
   background-color: var(--second-color);
   color: var(--main-color);
   cursor: pointer;
-  white-space: nowrap;
   border: none;
   transition: background-color 0.3s ease;
-  min-width: fit-content;
+  white-space: nowrap;
+  min-width: auto; /* allow shrinking */
 }
 header .btn:hover {
   background-color: var(--main-color);
