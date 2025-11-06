@@ -51,6 +51,35 @@ document.addEventListener("DOMContentLoaded", () => {
   const leadForm = document.getElementById("leadForm");
   const successBox = document.getElementById("successBox");
 
+const burger = document.getElementById('burgerMenu');
+const navbar = document.getElementById('navbar');
+
+function toggleMenu(state) {
+  burger.classList.toggle('active', state);
+  navbar.classList.toggle('active', state);
+  document.body.classList.toggle('menu-open', state);
+}
+
+burger.addEventListener('click', () => {
+  const isActive = burger.classList.contains('active');
+  toggleMenu(!isActive);
+});
+
+// Close when clicking a link
+navbar.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => toggleMenu(false));
+});
+
+// Close when clicking outside menu
+document.addEventListener('click', (e) => {
+  const clickedInsideMenu = navbar.contains(e.target) || burger.contains(e.target);
+  if (!clickedInsideMenu && navbar.classList.contains('active')) {
+    toggleMenu(false);
+  }
+});
+
+
+
   // === Show modal when "Claim Free eBook" clicked ===
   document.querySelectorAll(".btn[data-action='select']").forEach(btn => {
     btn.addEventListener("click", () => {
