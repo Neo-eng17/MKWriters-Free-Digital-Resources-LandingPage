@@ -230,86 +230,201 @@ display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; back
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } } 
 /* Header Responsiveness Keyframe */
 @media (max-width: 767px) {
-  /* Container for the heading and image section */
-  .home {
-    display: flex;
-    flex-direction: row; /* Keep left and right side horizontal */
-    justify-content: space-between;
-    align-items: flex-start;
-    width: 100vw;
-    padding: 10px;
-    gap: 15px;
-    overflow-x: hidden;
+
+  /* Animate overall body scaling & layout transition */
+  @keyframes mobile-scale-layout {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(0.9);
+      opacity: 1;
+    }
   }
 
-  /* Left side container (heading + supporting text) */
-  .home-text {
-    flex: 1 1 55%; /* Grow/shrink with basis 55% */
-    min-width: 0; /* Prevent overflow */
-    white-space: normal; /* Allow normal wrapping */
-    word-break: break-word; /* Avoid overly long words forcing breaks */
+  /* Animate header resizing and nav adjustment */
+  @keyframes mobile-header-reduce {
+    0% {
+      padding: 15px 36px;
+      font-size: 1rem;
+    }
+    100% {
+      padding: 8px 15px;
+      font-size: 0.85rem;
+    }
   }
 
-  /* Heading h1 to shrink but keep in one or two lines */
-  .home-text h1 {
-    font-size: calc(1.8rem + 1vw); /* Responsive scaling */
-    line-height: 1.1;
-    white-space: normal; /* Allow wrap but less aggressive */
-    max-width: 100%;
+  /* Animate home text scaling and left alignment */
+  @keyframes mobile-home-text {
+    0% {
+      font-size: 3.5rem;
+      letter-spacing: 2px;
+      max-width: 40vw;
+      white-space: normal;
+    }
+    100% {
+      font-size: 2rem;
+      letter-spacing: 0.8px;
+      max-width: 100%;
+      white-space: normal;
+    }
   }
 
-  /* Remove forced vertical stacking of words */
-  /* If you want to prevent breaks inside some phrases: */
-  .home-text h1 span, .home-text h1 strong {
+  /* Animate home app-stores icons scale and spacing */
+  @keyframes mobile-home-app-stores {
+    0% {
+      gap: 1rem;
+      transform: scale(1);
+    }
+    100% {
+      gap: 0.5rem;
+      transform: scale(0.85);
+    }
+  }
+
+  /* Animate home image box resizing */
+  @keyframes mobile-home-image {
+    0% {
+      max-width: 40vw;
+      max-height: 600px;
+    }
+    100% {
+      max-width: 100%;
+      max-height: 250px;
+    }
+  }
+
+  /* Animate services heading font and margin */
+  @keyframes mobile-services-heading {
+    0% {
+      font-size: 2rem;
+      margin: 2.5rem 0;
+    }
+    100% {
+      font-size: 1.5rem;
+      margin: 1.5rem 0 1rem 0;
+    }
+  }
+
+  /* Animate services container grid to 1 column smoothly */
+  @keyframes mobile-services-container {
+    0% {
+      grid-template-columns: repeat(auto-fit, minmax(300px, auto));
+      gap: 1rem;
+    }
+    100% {
+      grid-template-columns: 1fr;
+      gap: 0.5rem;
+    }
+  }
+
+  /* Animate review section box resize */
+  @keyframes mobile-review-box {
+    0% {
+      flex: 0 0 calc(33.333% - 1rem);
+      padding: 20px;
+    }
+    100% {
+      flex: 0 0 100%;
+      padding: 12px;
+    }
+  }
+
+  /* Animate footer container stacking and padding */
+  @keyframes mobile-footer-container {
+    0% {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2.5rem;
+      padding: 4rem 8%;
+    }
+    100% {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      padding: 2rem 3%;
+    }
+  }
+
+  /* Apply the keyframe animations */
+
+  /* Overall page scaling (optional for smoother visual) */
+  body, html {
+    animation: mobile-scale-layout 0.6s forwards ease-in-out;
+  }
+
+  /* Header */
+  header {
+    animation: mobile-header-reduce 0.5s forwards ease-in-out;
+  }
+  header .btn {
+    font-size: 0.85rem;
+    padding: 6px 12px;
+  }
+  header .navbar {
     white-space: nowrap;
+    overflow-x: auto;
+  }
+  header .navbar a {
+    font-size: 0.85rem;
+    margin: 0 8px;
   }
 
-  /* Right side container to take remaining space */
-  .home-image, .home-right {
-    flex: 1 1 40%;
-    min-width: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    max-height: 300px; /* Adjust as needed */
+  /* Home */
+  .home-text h1 {
+    animation: mobile-home-text 0.6s forwards ease-in-out;
   }
-
-  /* Adjust font size and weight for smaller text */
-  .home-text p {
-    font-size: 0.9rem;
-    margin-top: 10px;
-  }
-
-  /* App store buttons row - shrink and center */
   .home-app-stores {
-    display: flex;
-    justify-content: start;
-    gap: 10px;
-    margin-top: 15px;
+    animation: mobile-home-app-stores 0.5s forwards ease-in-out;
   }
   .home-app-stores img {
-    width: 80px;
+    width: 75px;
+  }
+  .home-image {
+    animation: mobile-home-image 0.6s forwards ease-in-out;
+    max-width: 100% !important;
+    max-height: 250px !important;
+  }
+  .home-image img {
+    max-width: 100%;
     height: auto;
   }
 
-  /* Navbar adjustments for mobile */
-  header .navbar {
-    display: none; /* Typically collapsed into hamburger, adjust as needed */
+  /* Services */
+  .heading h1 {
+    animation: mobile-services-heading 0.5s forwards ease-in-out;
+  }
+  .services-container {
+    animation: mobile-services-container 0.6s forwards ease-in-out;
+  }
+  .services-container .box {
+    padding: 12px;
   }
 
-  /* General body or section padding adjustments */
+  /* Reviews */
+  .reviews-wrapper .box {
+    animation: mobile-review-box 0.5s forwards ease-in-out;
+  }
+
+  /* Footer */
+  .footer-container {
+    animation: mobile-footer-container 0.6s forwards ease-in-out;
+  }
+  .footer-container {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+    padding: 2rem 3% !important;
+  }
+
+  /* General section padding smaller */
   section {
-    padding: 20px 10px;
+    padding: 30px 15px !important;
   }
-}
-
-/* Optional: Prevent heading words from breaking onto new lines individually */
-.home-text h1 {
-  /* This can help keep phrases continuous */
-  word-break: normal;
-  overflow-wrap: normal;
 }
 @keyframes scroll {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-} 
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
