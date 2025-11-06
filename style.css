@@ -183,64 +183,87 @@ display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; back
 .modal-overlay.active { display: flex; animation: fadeIn 0.3s ease forwards; } 
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } } 
 /* Header Responsiveness Keyframe */
-@keyframes header-mobile {
-  0% { padding: 15px 36px; font-size: 1rem; }
-  50% { padding: 10px 20px; font-size: 0.9rem; transform: scale(0.95); }
-  100% { padding: 8px 14px; font-size: 0.8rem; transform: scale(0.9); flex-direction: column; }
+@media (max-width: 767px) {
+  /* Container for the heading and image section */
+  .home {
+    display: flex;
+    flex-direction: row; /* Keep left and right side horizontal */
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100vw;
+    padding: 10px;
+    gap: 15px;
+    overflow-x: hidden;
+  }
+
+  /* Left side container (heading + supporting text) */
+  .home-text {
+    flex: 1 1 55%; /* Grow/shrink with basis 55% */
+    min-width: 0; /* Prevent overflow */
+    white-space: normal; /* Allow normal wrapping */
+    word-break: break-word; /* Avoid overly long words forcing breaks */
+  }
+
+  /* Heading h1 to shrink but keep in one or two lines */
+  .home-text h1 {
+    font-size: calc(1.8rem + 1vw); /* Responsive scaling */
+    line-height: 1.1;
+    white-space: normal; /* Allow wrap but less aggressive */
+    max-width: 100%;
+  }
+
+  /* Remove forced vertical stacking of words */
+  /* If you want to prevent breaks inside some phrases: */
+  .home-text h1 span, .home-text h1 strong {
+    white-space: nowrap;
+  }
+
+  /* Right side container to take remaining space */
+  .home-image, .home-right {
+    flex: 1 1 40%;
+    min-width: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-height: 300px; /* Adjust as needed */
+  }
+
+  /* Adjust font size and weight for smaller text */
+  .home-text p {
+    font-size: 0.9rem;
+    margin-top: 10px;
+  }
+
+  /* App store buttons row - shrink and center */
+  .home-app-stores {
+    display: flex;
+    justify-content: start;
+    gap: 10px;
+    margin-top: 15px;
+  }
+  .home-app-stores img {
+    width: 80px;
+    height: auto;
+  }
+
+  /* Navbar adjustments for mobile */
+  header .navbar {
+    display: none; /* Typically collapsed into hamburger, adjust as needed */
+  }
+
+  /* General body or section padding adjustments */
+  section {
+    padding: 20px 10px;
+  }
 }
 
-/* Home Section Responsiveness Keyframe */
-@keyframes home-mobile {
-  0% { grid-template-columns: repeat(2, 1fr); background-size: cover; font-size: 3.5rem; }
-  50% { grid-template-columns: 1fr; background-size: contain; font-size: 2.5rem; transform: scale(0.95); }
-  100% { grid-template-columns: 1fr; background-size: cover; font-size: 2rem; transform: scale(0.9); }
+/* Optional: Prevent heading words from breaking onto new lines individually */
+.home-text h1 {
+  /* This can help keep phrases continuous */
+  word-break: normal;
+  overflow-wrap: normal;
 }
-
-/* Services Container Responsiveness Keyframe */
-@keyframes services-mobile {
-  0% { grid-template-columns: repeat(auto-fit, minmax(300px, auto)); gap: 1rem; padding: 10px; }
-  50% { grid-template-columns: 1fr; gap: 0.5rem; padding: 8px; transform: scale(0.95); }
-  100% { grid-template-columns: 1fr; gap: 0.3rem; padding: 5px; transform: scale(0.9); }
-}
-
-/* About Section Responsiveness Keyframe */
-@keyframes about-mobile {
-  0% { width: 50%; background-size: cover; font-size: 2.5rem; }
-  50% { width: 80%; background-size: contain; font-size: 2rem; opacity: 0.8; }
-  100% { width: 100%; background-size: cover; font-size: 1.8rem; opacity: 1; justify-content: center; }
-}
-
-/* Reviews Wrapper Responsiveness Keyframe */
-@keyframes reviews-mobile {
-  0% { grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
-  50% { grid-template-columns: repeat(2, 1fr); gap: 1rem; transform: scale(0.95); }
-  100% { grid-template-columns: 1fr; gap: 0.5rem; transform: scale(0.9); }
-}
-
-/* Footer Responsiveness Keyframe */
-@keyframes footer-mobile {
-  0% { grid-template-columns: repeat(3, 1fr); padding: 4rem 8%; }
-  50% { grid-template-columns: 1fr; padding: 2rem 4%; transform: scale(0.95); }
-  100% { grid-template-columns: 1fr; padding: 1rem 2%; transform: scale(0.9); flex-direction: column; }
-}
-
-/* Modal Responsiveness Keyframe */
-@keyframes modal-mobile {
-  0% { max-width: 440px; padding: 24px; }
-  50% { max-width: 90%; padding: 18px; transform: scale(0.95); }
-  100% { max-width: 95%; padding: 12px; transform: scale(0.9); }
-}
-
-/* Trust Belt Logo Slider Responsiveness Keyframe */
-@keyframes trust-mobile {
-  0% { gap: 60px; height: 40px; }
-  50% { gap: 30px; height: 30px; transform: scale(0.95); }
-  100% { gap: 20px; height: 25px; transform: scale(0.9); animation-play-state: paused; }
-}
-
-/* General Mobile Scaling Keyframe (For All Assets) */
-@keyframes scale-mobile {
-  0% { transform: scale(1); }
-  50% { transform: scale(0.95); }
-  100% { transform: scale(0.9); }
-}
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+} 
