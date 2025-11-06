@@ -30,71 +30,113 @@ img {
   --gradient: linear-gradient(#c90303, #000000);
 }
 
-/* ==== Header ==== */
 header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px;
   background: var(--gradient);
+  flex-wrap: nowrap;
+  overflow-x: hidden;
   position: sticky;
   top: 0;
-  width: 100%;
   z-index: 1000;
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 20px;
 }
+
+/* Logo and slogan container */
 .logo {
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-family: 'Turret Road', cursive;
-  color: #ffbb00;
-  font-weight: 700;
-  font-size: 1.2rem;
-  cursor: pointer;
+  gap: 6px;
+  flex-shrink: 1;
+  min-width: 0;
 }
 .logo img {
-  width: 35px;
+  width: clamp(20px, 5vw, 35px);
   height: auto;
+  flex-shrink: 0;
 }
-.navbar {
+.logo span {
+  font-family: 'Turret Road', cursive;
+  font-weight: 600;
+  font-size: clamp(10px, 2vw, 14px);
+  color: #ffbb00;
+  white-space: nowrap;
+  flex-shrink: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Container holding nav and button */
+.nav-btn-container {
   display: flex;
-  gap: 20px;
+  align-items: center;
+  gap: 12px;
+  flex-grow: 1;
+  min-width: 0;
+  overflow: hidden;
+}
+
+/* Navigation */
+nav.navbar {
+  display: flex;
+  gap: 10px;
+  flex-wrap: nowrap;
   overflow-x: auto;
   white-space: nowrap;
+  flex-grow: 1;
+  min-width: 0;
+  scrollbar-width: none; /* Hide scrollbar Firefox */
 }
-.navbar a {
+nav.navbar::-webkit-scrollbar {
+  display: none; /* Hide scrollbar on Chrome/Safari */
+}
+nav.navbar a {
+  flex-shrink: 0;
+  font-size: clamp(10px, 2vw, 14px);
   color: #fff;
-  text-decoration: none;
   font-weight: 600;
-  padding: 8px 15px;
-  display: inline-block;
-  white-space: nowrap;
-  transition: background-color 0.3s ease;
+  text-decoration: none;
+  padding: 7px 12px;
   border-radius: 6px;
+  transition: background-color 0.3s ease;
+  white-space: nowrap;
 }
-.navbar a:hover,
-.navbar a.active {
-  background: var(--second-color);
+nav.navbar a:hover,
+nav.navbar a.active {
+  background-color: var(--second-color);
   color: var(--main-color);
 }
 
 /* CTA Button */
 header .btn {
+  flex-shrink: 0;
+  font-size: clamp(11px, 2.2vw, 14px);
+  padding: 6px 14px;
+  font-weight: 700;
+  border-radius: 8px;
   background-color: var(--second-color);
   color: var(--main-color);
-  padding: 8px 18px;
-  border-radius: 8px;
-  font-weight: 700;
-  border: none;
   cursor: pointer;
-  transition: background-color 0.3s ease;
   white-space: nowrap;
+  border: none;
+  transition: background-color 0.3s ease;
+  min-width: fit-content;
 }
 header .btn:hover {
   background-color: var(--main-color);
   color: var(--second-color);
 }
+
+/* Ensure header does not wrap or overflow */
+@media (max-width: 350px) {
+  .logo span {
+    /* Allow truncation on extremely narrow screens */
+    max-width: 80px;
+  }
+}
+
 
 /* ==== Home Section ==== */
 .home {
