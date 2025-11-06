@@ -17,24 +17,27 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-// ===== Scroll Reveal Animations =====
+// ===== Scroll Reveal Animation (Upgraded Version) ===== //
 const sr = ScrollReveal({
-  distance: '60px',
-  duration: 2500,
-  delay: 400,
-  reset: true
+  distance: '50px',
+  duration: 800,
+  easing: 'ease-out',
+  reset: false, 
+  viewFactor: 0.1 
 });
 
-sr.reveal('.text', { delay: 200, origin: 'top' });
-sr.reveal('.home-text', { delay: 400, origin: 'bottom' });
+// Upgraded reveals with staggered delays and refined origins
+sr.reveal('.home-img', { delay: 200, origin: 'right' });
+sr.reveal('.text', { delay: 100, origin: 'top' });
+sr.reveal('.home-text', { delay: 300, origin: 'bottom' });
 sr.reveal('.heading', { delay: 400, origin: 'bottom' });
-sr.reveal('.ride-container .box', { delay: 200, origin: 'bottom' });
-sr.reveal('.services-container .box', { delay: 200, origin: 'bottom' });
-sr.reveal('.about-container', { delay: 200, origin: 'bottom' });
-sr.reveal('.reviews', { delay: 200, origin: 'bottom' });
-sr.reveal('.newsletter', { delay: 400, origin: 'right' });
-sr.reveal('.trust-heading', { delay: 400, origin: 'bottom' });
-sr.reveal('.footer .box', { delay: 200, origin: 'right' });
+sr.reveal('.ride-container .box', { delay: 200, origin: 'bottom', interval: 150 }); // Staggered for boxes
+sr.reveal('.services-container .box', { delay: 250, origin: 'bottom', interval: 150 });
+sr.reveal('.about-container', { delay: 350, origin: 'left' }); // Changed to left for variety
+sr.reveal('.reviews', { delay: 400, origin: 'bottom' });
+sr.reveal('.newsletter', { delay: 500, origin: 'right' });
+sr.reveal('.trust-heading', { delay: 450, origin: 'bottom' });
+sr.reveal('.footer .box', { delay: 300, origin: 'right', interval: 200 });    
 
 // ===== Modal + Lead Form Functionality (EmailJS Version) =====
 document.addEventListener("DOMContentLoaded", () => {
